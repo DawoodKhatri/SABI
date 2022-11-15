@@ -3,7 +3,7 @@ import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
 import NewBooking from "./Components/Customer/NewBooking";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default function App() {
@@ -11,16 +11,21 @@ export default function App() {
     _id: "634308a380d689ea80316a70",
     name: "Dawood Khatri",
     email: "dawoodkhatri18@gmail.com",
-    type: "customer"
+    type: "customer",
   };
   const testDataR = {
     _id: "635b83e07a85914ac2da4b88",
     name: "admin",
     email: "dawoodkhatri18@gmail.com",
     type: "restaurant",
-    restaurant: null
+    restaurant: null,
   };
   const [userData, setData] = useState();
+  const api = process.env.REACT_APP_SERVER
+
+  useEffect(() => {
+    fetch(api);
+  });
   return (
     <BrowserRouter>
       <Routes>

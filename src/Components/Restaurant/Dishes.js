@@ -4,7 +4,7 @@ export default function Dishes(props) {
   const [dishes, setDishes] = useState();
   const [curr, setCurr] = useState();
 
-  var api = "https://6brpii.sse.codesandbox.io";
+  var api = process.env.REACT_APP_SERVER;
 
   useEffect(() => {
     var query = `/dishes/?ids=${JSON.stringify(props.dishes)}`;

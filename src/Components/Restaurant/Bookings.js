@@ -9,7 +9,7 @@ export default function Restaurants(props) {
   const [curr, setCurr] = useState(0);
 
   const navigate = useNavigate();
-  var api = "https://6brpii.sse.codesandbox.io";
+  var api = process.env.REACT_APP_SERVER;
   useEffect(() => {
     var query = `/bookings/?type=restaurant&id=${props.restaurant._id.toString()}`;
     !bookings &&

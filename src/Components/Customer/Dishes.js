@@ -3,7 +3,7 @@ import ItemsView from ".././ItemsView";
 
 export default function Dishes(props) {
   const [dishes, setDishes] = useState();
-  var api = "https://6brpii.sse.codesandbox.io";
+  var api = process.env.REACT_APP_SERVER;
   useEffect(() => {
     var query = `/all/?type=dishes`;
     !dishes &&

@@ -5,10 +5,9 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 
-const PORT = 4040;
+const PORT = process.env.PORT || 4040;
 
-const uri =
-  "mongodb+srv://dawood:dawood@mp2a.9d2ipdk.mongodb.net/?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 client.connect(() => {
   console.log("Connected to Database");

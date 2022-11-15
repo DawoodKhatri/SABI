@@ -4,14 +4,13 @@ import { useNavigate } from "react-router-dom";
 export default function Login(props) {
   const [State, setState] = useState("Initial");
   const navigate = useNavigate();
-  var api = "https://6brpii.sse.codesandbox.io";
+  var api = process.env.REACT_APP_SERVER;
   // var api = "http://localhost:4040";
   const verify = () => {
     var data = {
       email: document.getElementById("email").value,
       password: document.getElementById("password").value
     };
-    console.log(data);
     var query = `/?email=${data["email"]}&password=${data["password"]}`;
     fetch(api + "/login" + query).then((response) => {
       response.json().then((result) => {

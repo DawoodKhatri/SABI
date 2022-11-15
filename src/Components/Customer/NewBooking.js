@@ -8,7 +8,7 @@ export default function NewBooking(props) {
   const [selection, setSelection] = useState();
   const [details, setDetails] = useState();
   const navigate = useNavigate();
-  var api = "https://6brpii.sse.codesandbox.io";
+  var api = process.env.REACT_APP_SERVER;
   // api = "http://localhost:4040";
 
   useEffect(() => {

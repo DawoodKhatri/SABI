@@ -2,7 +2,7 @@ import { useState } from "react";
 export default function AddRestaurant(props) {
   const [State, setState] = useState("Initial");
   const [file, setFile] = useState();
-  var api = "https://6brpii.sse.codesandbox.io";
+  var api = process.env.REACT_APP_SERVER;
   // var api = "http://localhost:4040";
   const handleFile = (event) => {
     var reader = new FileReader();

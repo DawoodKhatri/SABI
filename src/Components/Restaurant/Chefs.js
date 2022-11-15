@@ -5,7 +5,7 @@ export default function Chefs(props) {
   const [chefs, setChefs] = useState();
   const [curr, setCurr] = useState(0);
 
-  var api = "https://6brpii.sse.codesandbox.io";
+  var api = process.env.REACT_APP_SERVER;
 
   useEffect(() => {
     var query = `/chefs/?ids=${JSON.stringify(props.chefs)}`;

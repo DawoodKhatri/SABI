@@ -6,7 +6,7 @@ export default function Signup(props) {
   const [OTP, setOtp] = useState();
   const [data, setData] = useState();
   const navigate = useNavigate();
-  var api = "https://6brpii.sse.codesandbox.io";
+  var api = process.env.REACT_APP_SERVER;
   // var api = "http://localhost:4040";
 
   const handleRestoCust = (event) => {

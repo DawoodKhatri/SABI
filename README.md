@@ -2,13 +2,13 @@
 
 Using MERN Stack to build a Restaurant Booking Website.
 
-## Installation of Requirements
+## Installation of Dependencies
 
 ```
 $ npm install
 ```
 
-## Installation of Server Requirements
+## Installation of Server Dependencies
 
 ```
 $ cd server

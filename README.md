@@ -40,4 +40,4 @@ REACT_APP_SERVER=Your Server URL
 $ npm run start
 ```
 
-### Live Demo - [`View`](https://sabi.onrender.com)
+### Live Demo - [`https://sabi.onrender.com`](https://sabi.onrender.com)

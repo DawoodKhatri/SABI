@@ -341,6 +341,8 @@ app.get("/newBooking", cors(), async (req, res) => {
     });
 });
 
+module.exports = app
+
 // app.listen(PORT, (error) => {
 //   if (!error)
 //     console.log(

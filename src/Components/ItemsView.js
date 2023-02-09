@@ -4,13 +4,13 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 export default function ItemsView(props) {
   const getItemCount = () => {
     if (window.innerWidth >= 992) {
-      return 6;
-    } else if (window.innerWidth >= 768) {
       return 4;
-    } else if (window.innerWidth >= 576) {
+    } else if (window.innerWidth >= 768) {
       return 3;
-    } else if (window.innerWidth < 576) {
+    } else if (window.innerWidth >= 576) {
       return 2;
+    } else if (window.innerWidth < 576) {
+      return 1;
     }
   };
 
@@ -36,7 +36,7 @@ export default function ItemsView(props) {
           <p className="mx-3 my-auto text-warning fw-semibold fs-3">
             {props.title}
           </p>
-          {props.button}
+          {props.button}{props.filter}
         </div>
         <div className="mx-3 bg-warning" style={{ height: "2px" }}></div>
         <div class="container-flex m-0 text-center">
@@ -45,7 +45,7 @@ export default function ItemsView(props) {
               props.items.map((item) => {
                 if (
                   show === "More" ||
-                  props.items.indexOf(item) < itemsCount - 1
+                  props.items.indexOf(item) < itemsCount
                 ) {
                   return (
                     <div className="col-12 col-sm-6 col-md-4 col-lg-3 p-2 text-center">
@@ -101,7 +101,7 @@ export default function ItemsView(props) {
               })}
 
             {props.items &&
-              props.items.length > itemsCount - 1 &&
+              props.items.length > itemsCount &&
               show === "More" && (
                 <a
                   className="p-0 m-2 fs-5 text-warning text-center"
@@ -111,7 +111,7 @@ export default function ItemsView(props) {
                 </a>
               )}
             {props.items &&
-              props.items.length > itemsCount - 1 &&
+              props.items.length > itemsCount &&
               show === "Less" && (
                 <a
                   className="p-0 m-2 fs-5 text-warning text-center"

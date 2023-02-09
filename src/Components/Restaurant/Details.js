@@ -68,7 +68,11 @@ export default function Details(props) {
         </div>
         <div className="col-12 col-md-6  text-center my-auto">
           <h1 className="text-warning mt-2 mb-4">{props.data.name}</h1>
-          <p className="my-2">{props.data.speciality}</p>
+          <p className="my-2">
+            {props.data.cuisines.map(
+              (cuisine, i) => `${i > 0 ? ", " : ""}${cuisine}`
+            )}
+          </p>
           <p className="my-2">{props.data.address}</p>
           <p className="my-2">Contact: {props.data.contacts.toString()}</p>
         </div>

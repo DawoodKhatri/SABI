@@ -7,6 +7,7 @@ const restaurantSchema = new mongoose.Schema({
   description: {
     type: String,
   },
+  type: { type: "String", enum: ["veg", "nonVeg", "veg&NonVeg"] },
   address: {
     location: {
       lat: { type: Number },
@@ -30,21 +31,27 @@ const restaurantSchema = new mongoose.Schema({
     close_time: { type: String },
   },
   cuisines: [{ type: String }],
-  rating: { type: Number },
-  reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
+  rating: { type: Number, default: 0 },
+  reviews: [
+    { type: mongoose.Schema.Types.ObjectId, default: [], ref: "Review" },
+  ],
   staff: {
-    chefs: [{ type: mongoose.Schema.Types.ObjectId, ref: "Staff" }],
+    chefs: [
+      { type: mongoose.Schema.Types.ObjectId, default: [], ref: "Staff" },
+    ],
   },
   products: [
     {
       type: mongoose.Schema.Types.ObjectId,
+      default: [],
       ref: "Product",
     },
   ],
-  tables: [{ type: mongoose.Schema.Types.ObjectId, ref: "Table" }],
+  tables: [{ type: mongoose.Schema.Types.ObjectId, default: [], ref: "Table" }],
   bookings: [
     {
       type: mongoose.Schema.Types.ObjectId,
+      default: [],
       ref: "Booking",
     },
   ],

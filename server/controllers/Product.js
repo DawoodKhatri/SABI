@@ -86,3 +86,51 @@ exports.deleteProduct = async (req, res) => {
     });
   }
 };
+
+exports.getProduct = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: "Product not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: product,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+exports.getProducts = async (req, res) => {
+  try {
+    const restaurant = await Restaurant.findById(req.params.id).populate(
+      "products"
+    );
+
+    if (!restaurant) {
+      return res.status(404).json({
+        success: false,
+        message: "Restaurant not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: restaurant.products,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};

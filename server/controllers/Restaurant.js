@@ -3,6 +3,15 @@ const User = require("../models/User");
 
 exports.addRestaurant = async (req, res) => {
   try {
+    const user = await User.findById(req.user._id);
+
+    if (!user.isBusiness) {
+      return res.status(401).json({
+        success: false,
+        message: "Business account required",
+      });
+    }
+
     const { name, description, type, address, service, cuisines } = req.body;
 
     const newRestaurant = {
@@ -16,8 +25,6 @@ exports.addRestaurant = async (req, res) => {
     };
 
     const restaurant = await Restaurant.create(newRestaurant);
-
-    const user = await User.findById(req.user._id);
 
     user.restaurants.push(restaurant._id);
     await user.save();

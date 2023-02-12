@@ -79,3 +79,42 @@ exports.deleteRestaurant = async (req, res) => {
     });
   }
 };
+
+exports.getRestaurant = async (req, res) => {
+  try {
+    const restaurant = await Restaurant.findById(req.params.id);
+
+    if(!restaurant) {
+      return res.status(404).json({
+        success: false,
+        message: "Restaurant not found",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: restaurant,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+exports.getRestaurants = async (req, res) => {
+  try {
+    const restaurants = await Restaurant.find({});
+    
+    return res.status(200).json({
+      success: true,
+      data: restaurants,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};

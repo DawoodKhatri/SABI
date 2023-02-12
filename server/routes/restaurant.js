@@ -1,9 +1,13 @@
 const express = require("express");
 const { isAuthenticated } = require("../middlewares/auth");
-const { addRestaurant } = require("../controllers/Restaurant");
+const {
+  addRestaurant,
+  deleteRestaurant,
+} = require("../controllers/Restaurant");
 
 const router = express.Router();
 
-router.route("/restaurant").post(isAuthenticated, addRestaurant);
+router.route("/restaurant/add").post(isAuthenticated, addRestaurant);
+router.route("/restaurant/:id").delete(isAuthenticated, deleteRestaurant);
 
 module.exports = router;

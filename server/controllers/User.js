@@ -59,12 +59,25 @@ exports.login = async (req, res) => {
 
     const options = {
       httpOnly: true,
-      secure: true,
     };
 
     res.status(200).cookie("token", token, options).json({
       success: true,
       data: user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+exports.logout = async (req, res) => {
+  try {
+    res.status(200).clearCookie("token").json({
+      success: true,
+      message: "Logged out",
     });
   } catch (error) {
     res.status(500).json({

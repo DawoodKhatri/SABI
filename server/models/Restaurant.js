@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const restaurantSchema = new mongoose.Schema({
-  owner: { type: mongoose.Schema.Types.ObjectId },
+  owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   name: {
     type: String,
     required: [true, "Please enter a restaurant name"],

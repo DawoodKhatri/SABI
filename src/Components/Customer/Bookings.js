@@ -45,7 +45,6 @@ export default function Restaurants(props) {
           description={getDescription(curr)}
         />
       )}
-      {curr}
       {bookings && (
         <ItemsView
           type="restaurant"

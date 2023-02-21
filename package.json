@@ -5,6 +5,7 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.15.1",
     "bootstrap": "5.2.1",
     "jquery": "3.6.1",
     "popper.js": "1.16.1",

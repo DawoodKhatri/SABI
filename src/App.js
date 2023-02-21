@@ -5,6 +5,7 @@ import Dashboard from "./Components/Dashboard";
 import NewBooking from "./Components/Customer/NewBooking";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RestaurantsPage from "./Components/RestaurantsPage";
 
 export default function App() {
   const testDataC = {
@@ -21,7 +22,7 @@ export default function App() {
     restaurant: null,
   };
   const [userData, setData] = useState();
-  const api = process.env.REACT_APP_SERVER
+  const api = process.env.REACT_APP_SERVER;
 
   useEffect(() => {
     fetch(api);
@@ -45,6 +46,7 @@ export default function App() {
             element={<NewBooking id={userData._id.toString()} />}
           />
         )}
+        <Route path="/restaurant/:id" element={<RestaurantsPage />} />
         <Route path="*" element={<>404</>} />
       </Routes>
     </BrowserRouter>

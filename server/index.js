@@ -1,4 +1,5 @@
 const { MongoClient, ObjectId } = require("mongodb");
+require("dotenv").config()
 const express = require("express");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
@@ -18,14 +19,14 @@ app.get("/sendemail", async (req, res) => {
     from: "MyDine <dk.appmailservice@gmail.com>",
     to: req.query["to"],
     subject: "OTP for MyDine",
-    html: `<h2>Your OTP is ${req.query["OTP"]} </h2>`
+    html: `<h2>Your OTP is ${req.query["OTP"]} </h2>`,
   };
   let transpoter = nodemailer.createTransport({
     service: "gmail", //i use outlook
     auth: {
       user: "dk.appmailservice@gmail.com", // email
-      pass: "zehqwquqxbzpykyu" //password
-    }
+      pass: "zehqwquqxbzpykyu", //password
+    },
   });
   transpoter.sendMail(options).then((e) => {
     res.status(200);
@@ -90,8 +91,8 @@ app.get("/addrestaurant", cors(), async (req, res) => {
           { _id: ObjectId(uid) },
           {
             $push: {
-              restaurants: restaurant.insertedId.toString()
-            }
+              restaurants: restaurant.insertedId.toString(),
+            },
           }
         )
         .then(() => {
@@ -117,8 +118,8 @@ app.get("/addchefs", cors(), async (req, res) => {
           { _id: ObjectId(rid) },
           {
             $push: {
-              chefs: chef.insertedId.toString()
-            }
+              chefs: chef.insertedId.toString(),
+            },
           }
         )
         .then(() => {
@@ -144,14 +145,25 @@ app.get("/adddishes", cors(), async (req, res) => {
           { _id: ObjectId(cid) },
           {
             $push: {
-              dishes: dish.insertedId.toString()
-            }
+              dishes: dish.insertedId.toString(),
+            },
           }
         )
         .then(() => {
           res.status(200);
           res.json({ result: "success" });
         });
+    });
+});
+
+app.get("/restaurant/:id", cors(), async (req, res) => {
+  client
+    .db("restaurant-booking")
+    .collection("restaurants")
+    .findOne({ _id: ObjectId(req.params.id) })
+    .then((restaurantData) => {
+      res.status(200);
+      res.json({ result: "success", restaurant: restaurantData });
     });
 });
 
@@ -192,7 +204,7 @@ app.get("/bookings", cors(), async (req, res) => {
               bookingData[
                 req.query["type"] === "customer" ? "restaurant" : "customer"
               ]
-            )
+            ),
           })
           .then((type) => {
             bookingDetails[bookingDatas.indexOf(bookingData)][
@@ -238,9 +250,8 @@ app.get("/bookings", cors(), async (req, res) => {
                   delete chef.dishes;
                   dishes[i].chef = chef;
                 }
-                bookingDetails[
-                  bookingDatas.indexOf(bookingData)
-                ].dishes = dishes;
+                bookingDetails[bookingDatas.indexOf(bookingData)].dishes =
+                  dishes;
                 if (bookingDetails.length === bookingDatas.length) {
                   let flag = true;
                   bookingDetails.forEach((data) => {
@@ -260,7 +271,7 @@ app.get("/bookings", cors(), async (req, res) => {
                     res.status(200);
                     res.json({
                       result: "success",
-                      bookingDetails: bookingDetails
+                      bookingDetails: bookingDetails,
                     });
                   }
                 }
@@ -312,7 +323,7 @@ app.get("/dish/chefs", cors(), async (req, res) => {
     .db("restaurant-booking")
     .collection("chefs")
     .find({
-      dishes: { $in: ids }
+      dishes: { $in: ids },
     })
     .toArray()
     .then((data) => {
@@ -349,4 +360,4 @@ app.listen(PORT, (error) => {
   else console.log("Error occurred, server can't start", error);
 });
 
-module.exports = app
+module.exports = app;

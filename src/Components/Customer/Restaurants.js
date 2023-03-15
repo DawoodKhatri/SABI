@@ -43,6 +43,7 @@ export default function Restaurants(props) {
   return (
     <>
       <ItemsView
+      page={true}
         title="Top Restaurants"
         items={filtered ? filtered : restaurants}
         image="images"

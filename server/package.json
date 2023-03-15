@@ -1,5 +1,5 @@
 {
-  "name": "restaurant-booking-server",
+  "name": "sabi-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,15 +7,15 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "cors": "2.8.5",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
-    "express": "4.18.2",
-    "mongodb": "4.10.0",
-    "nodemailer": "6.8.0"
-  },
-  "devDependencies": {
-    "nodemon": "1.18.4"
-  },
-  "keywords": []
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.8.3"
+  }
 }

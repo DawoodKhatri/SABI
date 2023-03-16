@@ -1,10 +1,12 @@
 import React from "react";
-import { HeroSection } from "../components";
+import { HeroSection, HomeService, HomeRestaurants } from "../components";
 
 const Home = () => {
   return (
     <>
       <HeroSection />
+      <HomeRestaurants/>
+      <HomeService/>
     </>
   );
 };

@@ -1,40 +1,36 @@
-import Home from "./Components/Home";
-import Signup from "./Components/Signup";
-import Login from "./Components/Login";
-import Dashboard from "./Components/Dashboard";
-import NewBooking from "./Components/Customer/NewBooking";
-import { useEffect, useState } from "react";
+// import Home from "./Components/Home";
+// import Signup from "./Components/Signup";
+// import Login from "./Components/Login";
+// import Dashboard from "./Components/Dashboard";
+// import NewBooking from "./Components/Customer/NewBooking";
+// import RestaurantsPage from "./Components/RestaurantsPage";
+
+import { Navbar } from "./components";
+import { Dashboard, Home, Login, Signup } from "./pages";
+
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import RestaurantsPage from "./Components/RestaurantsPage";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogin } from "./redux/slices/userSlice";
 
 export default function App() {
-  const testDataC = {
-    _id: "634308a380d689ea80316a70",
-    name: "Dawood Khatri",
-    email: "dawoodkhatri18@gmail.com",
-    type: "customer",
-  };
-  const testDataR = {
-    _id: "635b83e07a85914ac2da4b88",
-    name: "admin",
-    email: "dawoodkhatri18@gmail.com",
-    type: "restaurant",
-    restaurant: null,
-  };
-  const [userData, setData] = useState();
-  const api = process.env.REACT_APP_SERVER;
+  const data = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(api);
-  });
+    // console.log(data);
+    // dispatch(
+    //   userLogin({ email: "dawoodkhatri18@gmail.com", password: "DK@SABI" })
+    // );
+  }, []);
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={<Home userData={userData} setData={setData} />}
-        />
-        <Route path="/signup" element={<Signup update={setData} />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<Signup/>}/>
+        <Route path="/dashboard" element={<Dashboard/>}/>
+        {/* <Route path="/signup" element={<Signup update={setData} />} />
         <Route path="/login" element={<Login update={setData} />} />
         <Route
           path="/dashboard"
@@ -47,7 +43,7 @@ export default function App() {
           />
         )}
         <Route path="/restaurant/:id" element={<RestaurantsPage />} />
-        <Route path="*" element={<>404</>} />
+        <Route path="*" element={<>404</>} /> */}
       </Routes>
     </BrowserRouter>
   );

@@ -37,7 +37,7 @@ const restaurantSchema = new mongoose.Schema({
     close_time: { type: String, required: [true, "Please enter a close time"] },
   },
   cuisines: [{ type: String, required: [true, "Please enter cusines"] }],
-  rating: { type: Number, default: 0 },
+  rating: { type: mongoose.SchemaTypes.Decimal128, default: 0 },
   reviews: [
     { type: mongoose.Schema.Types.ObjectId, default: [], ref: "Review" },
   ],

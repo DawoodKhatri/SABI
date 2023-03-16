@@ -36,7 +36,6 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(req.body);
 
     let user = await User.findOne({ email }).select("+password");
 
@@ -65,7 +64,24 @@ exports.login = async (req, res) => {
 
     res.status(200).cookie("token", token, options).json({
       success: true,
-      data: user,
+      message: "Logged in Successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+exports.getUser = async (req, res) => {
+  try {
+
+    let {email, name, isBusiness} = req.user
+
+    res.status(200).json({
+      success: true,
+      data: {email, name, isBusiness},
     });
   } catch (error) {
     res.status(500).json({

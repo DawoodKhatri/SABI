@@ -80,11 +80,41 @@ exports.deleteRestaurant = async (req, res) => {
   }
 };
 
+exports.getUserRestaurants = async (req, res) => {
+  try {
+    if (!req.user.isBusiness) {
+      return res.status(401).json({
+        success: false,
+        message: "Login with a Business Account",
+      });
+    }
+
+    const restaurants = (await req.user.populate("restaurants")).restaurants;
+
+    if (!restaurants.length) {
+      return res.status(404).json({
+        success: false,
+        message: "No Restaurants added",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: restaurants,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 exports.getRestaurant = async (req, res) => {
   try {
     const restaurant = await Restaurant.findById(req.params.id);
 
-    if(!restaurant) {
+    if (!restaurant) {
       return res.status(404).json({
         success: false,
         message: "Restaurant not found",
@@ -106,7 +136,7 @@ exports.getRestaurant = async (req, res) => {
 exports.getRestaurants = async (req, res) => {
   try {
     const restaurants = await Restaurant.find({});
-    
+
     return res.status(200).json({
       success: true,
       data: restaurants,

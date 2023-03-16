@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema({
     type: String,
   },
   rating: {
-    type: Number,
+    type: mongoose.SchemaTypes.Decimal128,
     default: 0,
   },
   reviews: [

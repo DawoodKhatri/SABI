@@ -50,7 +50,7 @@ export default function Restaurants(props) {
         filter={
           <div className=" m-3 d-flex justify-content-between">
             <span className="my-auto mx-3">Filter By: </span>
-            <select class="form-select w-auto" onChange={filter}>
+            <select className="form-select w-auto" onChange={filter}>
               <option value="Default">Default</option>
               {cuisines.map((cuisine, i) => (
                 <option value={cuisine}>{cuisine}</option>

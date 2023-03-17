@@ -4,7 +4,7 @@
   "description": "",
   "keywords": [],
   "main": "src/index.js",
-  "proxy": "https://sabi-test-server.onrender.com",
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.15.1",
     "@reduxjs/toolkit": "^1.9.3",

@@ -24,9 +24,9 @@ const HomeNav = () => {
 
   return (
     <>
-      <nav class="navbar">
-        <div class="container-fluid ">
-          <h3 class={`${styles.subtitleFont} text-warning px-3`} href="/">
+      <nav className="navbar">
+        <div className="container-fluid ">
+          <h3 className={`${styles.subtitleFont} text-warning px-3`} href="/">
             SABI
           </h3>
 

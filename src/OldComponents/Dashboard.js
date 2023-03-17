@@ -5,10 +5,10 @@ export default function Dashboard(props) {
   return (
     <>
       {!props.userData && <Navigate to="/" replace={true} />}
-      <nav class="navbar bg-warning p-0">
-        <div class="container-fluid">
-          <p class="navbar-brand t2 my-auto pt-3 fs-3 pb-0">S A B I</p>
-          <div class="d-flex">
+      <nav className="navbar bg-warning p-0">
+        <div className="container-fluid">
+          <p className="navbar-brand t2 my-auto pt-3 fs-3 pb-0">S A B I</p>
+          <div className="d-flex">
             <p className="my-auto mx-2 fs-5">
               <u>{props.userData && props.userData["name"]}</u>
             </p>

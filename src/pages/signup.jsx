@@ -59,68 +59,68 @@ const Signup = () => {
       className="container-fluid min-vh-100 p-2 d-flex"
       style={{ backgroundColor: "#eee" }}
     >
-      <div class="card col-12 col-sm-8 col-md-6 col-xl-4 rounded rounded-4 text-center m-auto">
-        <div class="card-header">
+      <div className="card col-12 col-sm-8 col-md-6 col-xl-4 rounded rounded-4 text-center m-auto">
+        <div className="card-header">
           <p className="card-title display-6 fw-normal py-3">Sign Up as</p>
-          <ul class="nav nav-pills card-header-pills p-2">
+          <ul className="nav nav-pills card-header-pills p-2">
             <li
-              class="btn btn-outline-warning rounded rounded-3 px-3 mx-auto active"
+              className="btn btn-outline-warning rounded rounded-3 px-3 mx-auto active"
               onClick={handleRestoCust}
             >
               Customer
             </li>
             <li
-              class="btn btn-outline-warning rounded rounded-3 px-3 mx-auto"
+              className="btn btn-outline-warning rounded rounded-3 px-3 mx-auto"
               onClick={handleRestoCust}
             >
               Restaurant
             </li>
           </ul>
         </div>
-        <div class="card-body px-4">
-          <div class="card-text text-start">
-            <div class="mb-3">
-              <label class="form-label">Name</label>
+        <div className="card-body px-4">
+          <div className="card-text text-start">
+            <div className="mb-3">
+              <label className="form-label">Name</label>
               <input
                 ref={nameRef}
                 type="name"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter your name"
               />
             </div>
-            <div class="mb-3">
-              <label class="form-label">Email address</label>
+            <div className="mb-3">
+              <label className="form-label">Email address</label>
               <input
                 ref={emailRef}
                 type="email"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter your email"
               />
             </div>
-            <div class="mb-3">
-              <label class="form-label">Password</label>
+            <div className="mb-3">
+              <label className="form-label">Password</label>
               <input
                 ref={passwordRef}
                 type="password"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter your password"
               />
             </div>
-            <div class="mb-3">
-              <label class="form-label">Confirm Password</label>
+            <div className="mb-3">
+              <label className="form-label">Confirm Password</label>
               <input
                 ref={passwordConfirmRef}
                 type="password"
-                class="form-control"
+                className="form-control"
                 placeholder="Re-enter your password"
               />
             </div>
             {error && (
-              <div class="mb-3 text-center border border-2 rounded rounded-2 border-danger">
-                <label class="form-label mx-3 my-1 text-danger">{error}</label>
+              <div className="mb-3 text-center border border-2 rounded rounded-2 border-danger">
+                <label className="form-label mx-3 my-1 text-danger">{error}</label>
               </div>
             )}
-            <div class="mt-4 mb-2 text-center">
+            <div className="mt-4 mb-2 text-center">
               <button className="btn btn-warning" onClick={register}>
                 Create Account
               </button>

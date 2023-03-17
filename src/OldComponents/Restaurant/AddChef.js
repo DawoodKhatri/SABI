@@ -12,40 +12,40 @@ export default function AddChef(props) {
   return (
     <>
       <div
-        class="modal fade"
+        className="modal fade"
         id="addChefModal"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
+        <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">
                 Add New Chef
               </h1>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">
-              <div class="mb-3">
-                <label class="form-label">Chef Name</label>
+            <div className="modal-body">
+              <div className="mb-3">
+                <label className="form-label">Chef Name</label>
                 <input
                   id="chefName"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Enter Chef Name"
                 />
-                <div class="invalid-feedback"></div>
+                <div className="invalid-feedback"></div>
               </div>
-              <div class="mb-3">
-                <label class="form-label">Upload Photo of Chef</label>
+              <div className="mb-3">
+                <label className="form-label">Upload Photo of Chef</label>
                 <input
                   id="chefImage"
-                  class="form-control"
+                  className="form-control"
                   type="file"
                   accept="image/png, image/gif, image/jpeg"
                   onChange={handleFile}
@@ -59,36 +59,36 @@ export default function AddChef(props) {
                     />
                   </div>
                 )}
-                <div class="invalid-feedback"></div>
+                <div className="invalid-feedback"></div>
               </div>
-              <div class="mb-3">
-                <label class="form-label">Chef Speciality</label>
+              <div className="mb-3">
+                <label className="form-label">Chef Speciality</label>
                 <textarea
                   id="chefSpeciality"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Enter Chef Speciality"
                 />
-                <div class="invalid-feedback"></div>
+                <div className="invalid-feedback"></div>
               </div>
-              <div class="mb-3">
-                <label class="form-label">Chef Experience</label>
+              <div className="mb-3">
+                <label className="form-label">Chef Experience</label>
                 <input
                   id="chefExperience"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Enter Chef Experience in Years"
                 />
-                <div class="invalid-feedback"></div>
+                <div className="invalid-feedback"></div>
               </div>
             </div>
-            <div class="modal-footer">
+            <div className="modal-footer">
               <button
                 type="button"
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 data-bs-dismiss="modal"
               >
                 Close
               </button>
-              <button type="button" class="btn btn-warning">
+              <button type="button" className="btn btn-warning">
                 Add Chef
               </button>
             </div>

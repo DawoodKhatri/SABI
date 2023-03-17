@@ -224,8 +224,8 @@ export default function NewBooking(props) {
       className="container-fluid min-vh-100 p-2 d-flex"
       style={{ backgroundColor: "#eee" }}
     >
-      <div class="card col-12 col-sm-10 col-lg-8 rounded rounded-4 text-center m-auto">
-        <div class="card-header">
+      <div className="card col-12 col-sm-10 col-lg-8 rounded rounded-4 text-center m-auto">
+        <div className="card-header">
           {State !== "done" && (
             <p className="card-title display-6 fw-normal py-3">
               Booking a Table
@@ -242,7 +242,7 @@ export default function NewBooking(props) {
             <div className="col-12 col-sm-10 col-lg-8 mx-auto mt-4 p-4 border border-2 border-warning rounded shadow">
               <img
                 src={selection.restaurant.images[0]}
-                class="restoImages w-100 rounded rounded-2 "
+                className="restoImages w-100 rounded rounded-2 "
                 alt=""
               />
               <div className="text-center mx-auto">
@@ -268,7 +268,7 @@ export default function NewBooking(props) {
               {State === "dish" && "Choose a Dish"}
               {State === "booking" && "Schedule Booking"}
             </h5>
-            <div class="card-body vh-50 px-4 py-2 row">
+            <div className="card-body vh-50 px-4 py-2 row">
               {State === "restaurant" &&
                 data &&
                 data.map((item) => {
@@ -310,19 +310,19 @@ export default function NewBooking(props) {
                 })}
               {State === "booking" && (
                 <div className="row mx-auto">
-                  <div class="mb-3 col-12 col-sm-6 text-start">
-                    <label class="form-label mx-2">Date</label>
+                  <div className="mb-3 col-12 col-sm-6 text-start">
+                    <label className="form-label mx-2">Date</label>
                     <input
                       id="date"
                       type="date"
-                      class="form-control"
+                      className="form-control"
                       min={today}
                     />
                     <label className="invalid-feedback">Enter Date</label>
                   </div>
-                  <div class="mb-3 col-12 col-sm-6 text-start">
-                    <label class="form-label mx-2">Time</label>
-                    <input id="time" type="time" class="form-control" />
+                  <div className="mb-3 col-12 col-sm-6 text-start">
+                    <label className="form-label mx-2">Time</label>
+                    <input id="time" type="time" className="form-control" />
                     <label className="invalid-feedback">Enter Time</label>
                   </div>
                 </div>
@@ -337,7 +337,7 @@ export default function NewBooking(props) {
                 <h5 className="card-title itemTitle mt-4 mb-0 mx-auto p-2 border border-2 border-white rounded">
                   Select Chef for: {dish.name}
                 </h5>
-                <div class="card-body vh-50 px-4 py-2 row">
+                <div className="card-body vh-50 px-4 py-2 row">
                   {data &&
                     data[selection.dishes.indexOf(dish)].map((item) => {
                       return (
@@ -372,7 +372,7 @@ export default function NewBooking(props) {
             );
           })}
         {State !== "done" && (
-          <div class="card-footer mb-2 px-4 d-flex justify-content-between">
+          <div className="card-footer mb-2 px-4 d-flex justify-content-between">
             <button
               id="btn1"
               className="btn btn-secondary"
@@ -392,7 +392,7 @@ export default function NewBooking(props) {
           </div>
         )}
         {State === "done" && (
-          <div class="card-footer mb-2 px-4 d-flex justify-content-end">
+          <div className="card-footer mb-2 px-4 d-flex justify-content-end">
             <button
               id="btn2"
               className="btn btn-warning"

@@ -21,7 +21,7 @@ const RestaurantsPage = () => {
         <div className="container-fluid shadow w-auto my-3 mx-3 p-4 rounded">
           <img
             src={restaurant.images[0]}
-            class="restoImages d-block w-100 mx-auto rounded"
+            className="restoImages d-block w-100 mx-auto rounded"
             style={{ width: "100%", objectFit: "cover", aspectRatio: 2.8 }}
           />
           <div className="row justify-content-between">

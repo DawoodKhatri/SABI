@@ -41,7 +41,7 @@ export default function ItemsView(props) {
           {props.filter}
         </div>
         <div className="mx-3 bg-warning" style={{ height: "2px" }}></div>
-        <div class="container-flex m-0 text-center">
+        <div className="container-flex m-0 text-center">
           <div className="row p-4 m-0 ">
             {props.items &&
               props.items.map((item) => {

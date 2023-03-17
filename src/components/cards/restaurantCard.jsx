@@ -43,11 +43,11 @@ const RestaurantCard = ({
             <span className="text-warning fs-6">
               {Array.apply(null, { length: 5 }).map((_, i) => {
                 if (rating - i <= 0) {
-                  return <i class="bi bi-star"></i>;
+                  return <i className="bi bi-star" key={`$rating_star_${i}`}></i>;
                 } else if (rating - i < 1) {
-                  return <i class="bi bi-star-half"></i>;
+                  return <i className="bi bi-star-half" key={`$rating_star_${i}`}></i>;
                 } else {
-                  return <i class="bi bi-star-fill"></i>;
+                  return <i className="bi bi-star-fill" key={`$rating_star_${i}`}></i>;
                 }
               })}
             </span>

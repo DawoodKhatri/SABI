@@ -1,4 +1,7 @@
 const httpRequest = async (url, method, params = {}) => {
+  if (process.env.NODE_ENV === "production") {
+    url = process.env.REACT_APP_API + url;
+  }
   let options = {
     method,
 

@@ -24,3 +24,21 @@ exports.isAuthenticated = async (req, res, next) => {
     });
   }
 };
+
+exports.isBusinessAuth = async (req, res, next) => {
+  try {
+    if (!req.user.isBusiness) {
+      return res.status(401).json({
+        success: false,
+        message: "Login with a Business Account",
+      });
+    }
+
+    next();
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};

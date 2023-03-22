@@ -1,11 +1,19 @@
 const mongoose = require("mongoose");
-const Product = require("../models/Product");
+const Table = require("../models/Table");
 const Restaurant = require("../models/Restaurant");
 
-exports.addProduct = async (req, res) => {
+exports.addTable = async (req, res) => {
   try {
-    const { restaurantId, name, image, categories, cuisine, tag, price } =
-      req.body;
+    const { restaurantId, number, seats, price } = req.body;
+
+    let table = await Table.findOne({ number });
+
+    if (table) {
+      return res.status(409).json({
+        success: false,
+        message: "Table Already Exists",
+      });
+    }
 
     const restaurant = await Restaurant.findById(restaurantId);
 
@@ -23,23 +31,20 @@ exports.addProduct = async (req, res) => {
       });
     }
 
-    const newProduct = {
-      name,
-      image,
-      categories,
-      cuisine,
-      tag,
+    const newTable = {
+      number,
+      seats,
       price,
     };
 
-    const product = await Product.create(newProduct);
+    table = await Table.create(newTable);
 
-    restaurant.products.push(product._id);
+    restaurant.tables.push(table._id);
     await restaurant.save();
 
     res.status(200).json({
       success: true,
-      message: "Product added successfully",
+      message: "Table added successfully",
     });
   } catch (error) {
     res.status(500).json({
@@ -49,18 +54,19 @@ exports.addProduct = async (req, res) => {
   }
 };
 
-exports.deleteProduct = async (req, res) => {
+exports.deleteTable = async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id);
-    if (!product) {
+    const table = await Table.findById(req.params.id);
+
+    if (!table) {
       return res.status(404).json({
         success: false,
-        message: "Product not found",
+        message: "Table not found",
       });
     }
 
     const restaurant = await Restaurant.findOne({
-      products: mongoose.Types.ObjectId(req.params.id),
+      tables: mongoose.Types.ObjectId(req.params.id),
     });
 
     if (!restaurant) {
@@ -77,18 +83,18 @@ exports.deleteProduct = async (req, res) => {
       });
     }
 
-    product.remove();
-    await product.save();
+    table.remove();
+    await table.save();
 
-    const index = restaurant.products.indexOf(
+    const index = restaurant.tables.indexOf(
       mongoose.Types.ObjectId(req.params.id)
     );
-    restaurant.products.splice(index, 1);
+    restaurant.tables.splice(index, 1);
     await restaurant.save();
 
     res.status(200).json({
       success: true,
-      message: "Product deleted successfully",
+      message: "Table deleted successfully",
     });
   } catch (error) {
     res.status(500).json({
@@ -98,33 +104,10 @@ exports.deleteProduct = async (req, res) => {
   }
 };
 
-exports.getProduct = async (req, res) => {
-  try {
-    const product = await Product.findById(req.params.id);
-
-    if (!product) {
-      return res.status(404).json({
-        success: false,
-        message: "Product not found",
-      });
-    }
-
-    res.status(200).json({
-      success: true,
-      data: product,
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-};
-
-exports.getProducts = async (req, res) => {
+exports.getTables = async (req, res) => {
   try {
     const restaurant = await Restaurant.findById(req.params.id).populate(
-      "products"
+      "tables"
     );
 
     if (!restaurant) {
@@ -133,10 +116,9 @@ exports.getProducts = async (req, res) => {
         message: "Restaurant not found",
       });
     }
-
     res.status(200).json({
       success: true,
-      data: restaurant.products,
+      data: restaurant.tables,
     });
   } catch (error) {
     res.status(500).json({

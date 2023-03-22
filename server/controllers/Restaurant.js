@@ -5,13 +5,6 @@ exports.addRestaurant = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
 
-    if (!user.isBusiness) {
-      return res.status(401).json({
-        success: false,
-        message: "Business account required",
-      });
-    }
-
     const { name, description, type, address, service, cuisines } = req.body;
 
     const newRestaurant = {
@@ -45,17 +38,17 @@ exports.deleteRestaurant = async (req, res) => {
   try {
     const restaurant = await Restaurant.findById(req.params.id);
 
-    if (!restaurant) {
-      return res.status(404).json({
-        success: false,
-        message: "Restaurant not found",
-      });
-    }
-
     if (restaurant.owner.toString() !== req.user._id.toString()) {
       return res.status(401).json({
         success: false,
         message: "Unauthorized",
+      });
+    }
+
+    if (!restaurant) {
+      return res.status(404).json({
+        success: false,
+        message: "Restaurant not found",
       });
     }
 
@@ -82,13 +75,6 @@ exports.deleteRestaurant = async (req, res) => {
 
 exports.getUserRestaurants = async (req, res) => {
   try {
-    if (!req.user.isBusiness) {
-      return res.status(401).json({
-        success: false,
-        message: "Login with a Business Account",
-      });
-    }
-
     const restaurants = (await req.user.populate("restaurants")).restaurants;
 
     if (!restaurants.length) {

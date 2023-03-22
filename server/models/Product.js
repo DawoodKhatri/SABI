@@ -18,6 +18,10 @@ const productSchema = new mongoose.Schema({
     },
   ],
   tag: { type: String },
+  price: {
+    type: Number,
+    required: [true, "Please enter product price"],
+  },
 });
 
 module.exports = mongoose.model("Product", productSchema);

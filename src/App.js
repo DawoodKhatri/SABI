@@ -6,7 +6,7 @@
 // import RestaurantsPage from "./Components/RestaurantsPage";
 
 import { Navbar } from "./components";
-import { Dashboard, Home, Login, Signup } from "./pages";
+import { Dashboard, Home, Login, Restaurants, Signup } from "./pages";
 
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -27,6 +27,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/restaurants" element={<Restaurants />} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Signup/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>

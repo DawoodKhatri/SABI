@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import httpRequest from "../../utils/request";
-import { RestaurantCard } from "../index";
+import { Navbar, RestaurantCard } from "../components";
+import httpRequest from "../utils/request";
 
-const HomeRestaurants = () => {
+const Restaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
   useEffect(() => {
     httpRequest("/api/restaurants", "GET").then((response) => {
@@ -13,16 +12,19 @@ const HomeRestaurants = () => {
     });
   }, []);
   return (
+    <>
+    <Navbar/>
     <div className="px-3 py-5">
       <div className="d-flex justify-content-between px-4">
-      <p className="mx-3 my-auto text-warning fw-semibold fs-3">
+        <p className="mx-3 my-auto text-warning fw-semibold fs-3">
           Top Restaurants
         </p>
-        <Link to="/restaurants" className="mx-3 my-auto text-dark text-decoration-none">See More</Link>
       </div>
       <div className="mx-3 bg-warning" style={{ height: "2px" }}></div>
       <div className="px-4 py-3">
-        <div className="row flex-row flex-nowrap" style={{overflowX: "auto", overflowY: "hidden"}}>
+        <div
+          className="row"
+        >
           {restaurants.map((restaurant, index) => (
             <div
               key={`home_page_restaurants_card_${index}`}
@@ -33,8 +35,8 @@ const HomeRestaurants = () => {
           ))}
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 
-export default HomeRestaurants;
+export default Restaurants;

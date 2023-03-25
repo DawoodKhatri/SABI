@@ -66,7 +66,7 @@ exports.deleteTable = async (req, res) => {
     }
 
     const restaurant = await Restaurant.findOne({
-      tables: mongoose.Types.ObjectId(req.params.id),
+      tables: { $in: mongoose.Types.ObjectId(req.params.id) },
     });
 
     if (!restaurant) {

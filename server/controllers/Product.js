@@ -60,7 +60,7 @@ exports.deleteProduct = async (req, res) => {
     }
 
     const restaurant = await Restaurant.findOne({
-      products: mongoose.Types.ObjectId(req.params.id),
+      products: { $in: mongoose.Types.ObjectId(req.params.id) },
     });
 
     if (!restaurant) {
